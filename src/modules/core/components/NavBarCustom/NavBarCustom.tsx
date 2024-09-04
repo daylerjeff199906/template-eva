@@ -3,36 +3,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
 import { ItemLink, MenuSection, RolesSection } from './sections'
-import { IMenuItem } from '@/types'
-
-// const options = [
-//   { value: '1', label: 'Option 1' },
-//   { value: '2', label: 'Option 2' },
-//   { value: '3', label: 'Option 3' },
-// ]
-
-// const menuNavbar = [
-//   { label: 'Feddback', href: '/feedback' },
-//   { label: 'Historial', href: '/history' },
-//   { label: 'ayuda', href: '/help' },
-// ]
-
-// const menuFooter = [
-//   { label: 'Terminos y condiciones', href: '/navbar' },
-//   { label: 'Politicas de privacidad', href: '/privacy' },
-//   { label: 'Contacto', href: '/contact' },
-// ]
-
-interface INavBarCustomProps {
-  disabledItemsFooter?: boolean
-  menuFooter?: IMenuItem[]
-  menuNavbar?: IMenuItem[]
-  user: {
-    name: string
-    email: string
-    roles: IMenuItem[]
-  }
-}
+import { IMenuItem, INavBarCustomProps } from '@/types'
 
 export const NavBarCustom = (props: INavBarCustomProps) => {
   const { disabledItemsFooter, menuFooter, menuNavbar, user } = props
