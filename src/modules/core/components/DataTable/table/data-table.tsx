@@ -24,17 +24,33 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTableToolbar } from "../components/data-table-toolbar";
-import { DataTablePagination } from "../components/data-table-pagination";
+import {
+  DataTableToolbar,
+  IPriorityOption,
+  IStatusOption,
+} from "../sections/data-table-toolbar";
+import { DataTablePagination } from "../sections/data-table-pagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  hasPagination?: boolean;
+  hasToolbar?: boolean;
+  statusOptions?: IStatusOption[] | undefined;
+  priorityOptions?: IPriorityOption[] | undefined;
+  hasColumnFilters?: boolean;
+  hasSearch?: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  hasPagination = true,
+  hasToolbar = true,
+  statusOptions = [],
+  priorityOptions = [],
+  hasColumnFilters = true,
+  hasSearch = true,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -68,7 +84,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
+      {hasToolbar && (
+        <DataTableToolbar
+          table={table}
+          statusOptions={statusOptions}
+          priorityOptions={priorityOptions}
+          hasPriority={priorityOptions.length > 0}
+          hasStatus={statusOptions.length > 0}
+          hasColumnFilters={hasColumnFilters}
+          hasSearch={hasSearch}
+        />
+      )}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -119,7 +145,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      {hasPagination && <DataTablePagination table={table} />}
     </div>
   );
 }

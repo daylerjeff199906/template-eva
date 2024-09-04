@@ -8,36 +8,67 @@ import { Input } from "@/components/ui/input";
 
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { DataTableViewOptions } from "./data-table-view-options";
-import { priorities, statuses } from "@/app/(components)/table/data/data";
+
+export interface IStatusOption {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<{ className?: string }>;
+}
+
+export type IPriorityOption = IStatusOption;
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
+  statusOptions?: IStatusOption[] | undefined;
+  priorityOptions?: IPriorityOption[] | undefined;
+  hasPriority?: boolean;
+  hasStatus?: boolean;
+  hasColumnFilters?: boolean;
+  hasSearch?: boolean;
 }
 
 export function DataTableToolbar<TData>({
   table,
+  statusOptions: statuses = [],
+  priorityOptions: priorities = [],
+  hasPriority = true,
+  hasStatus = true,
+  hasColumnFilters = true,
+  hasSearch = true,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
-        <Input
+        {
+          hasSearch && (
+            <Input
+              placeholder="Filter tasks..."
+              value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+              onChange={(event) =>
+                table.getColumn("title")?.setFilterValue(event.target.value)
+              }
+              className="h-8 w-[150px] lg:w-[250px]"
+            />
+          )
+        }
+        {/* <Input
           placeholder="Filter tasks..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
           className="h-8 w-[150px] lg:w-[250px]"
-        />
-        {table.getColumn("status") && (
+        /> */}
+        {hasStatus && table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
             title="Status"
             options={statuses}
           />
         )}
-        {table.getColumn("priority") && (
+        {hasPriority && table.getColumn("priority") && (
           <DataTableFacetedFilter
             column={table.getColumn("priority")}
             title="Priority"
@@ -55,7 +86,7 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
+      {hasColumnFilters && <DataTableViewOptions table={table} />}
     </div>
   );
 }
