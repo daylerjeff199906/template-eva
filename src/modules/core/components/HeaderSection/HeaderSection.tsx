@@ -3,19 +3,9 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, Plus } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { IHeaderSection } from '@/types'
 
-interface IHeaderSectionProps {
-  title?: string
-  subtitle?: string
-  showBackButton?: boolean
-  disableAddButton?: boolean
-  labelAddButton?: string
-  renderLeftSection?: React.ReactNode
-  renderRightSection?: React.ReactNode
-  hrefAddButton?: string
-}
-
-export const HeaderSection = (props: IHeaderSectionProps) => {
+export const HeaderSection = (props: IHeaderSection.IHeaderSectionProps) => {
   const {
     showBackButton,
     disableAddButton,
