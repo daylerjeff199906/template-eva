@@ -1,3 +1,10 @@
 export const NavBarCustom = () => {
-  return <div>NavBarCustom</div>
+  return (
+    <nav>
+      <main className="container">
+        <section></section>
+        <section></section>
+      </main>
+    </nav>
+  )
 }

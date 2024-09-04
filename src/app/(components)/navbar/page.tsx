@@ -1,3 +1,9 @@
+import { NavBarCustom } from '@/modules/core/components'
+
 export default function Page() {
-  return <div>page</div>
+  return (
+    <div>
+      <NavBarCustom />
+    </div>
+  )
 }
