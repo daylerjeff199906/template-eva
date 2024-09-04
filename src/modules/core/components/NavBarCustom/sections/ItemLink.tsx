@@ -1,9 +1,5 @@
+import { IItemLink } from '@/types'
 import Link from 'next/link'
-interface IItemLink {
-  label: string
-  href: string
-  isActived?: boolean
-}
 
 export const ItemLink = (props: IItemLink) => {
   const { label, href, isActived } = props

@@ -1,8 +1,5 @@
+import { IMenuSectionProps } from '@/types'
 import Link from 'next/link'
-
-interface IMenuSectionProps {
-  menuNavbar: { label: string; href: string }[]
-}
 
 export const MenuSection = (props: IMenuSectionProps) => {
   const { menuNavbar } = props

@@ -7,10 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-
-interface IRolesSectionProps {
-  options: { label: string; value: string }[]
-}
+import { IRolesSectionProps } from '@/types'
 
 export const RolesSection = (props: IRolesSectionProps) => {
   const { options } = props
