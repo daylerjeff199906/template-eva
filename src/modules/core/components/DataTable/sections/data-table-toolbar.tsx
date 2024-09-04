@@ -44,7 +44,7 @@ export function DataTableToolbar<TData>({
         {
           hasSearch && (
             <Input
-              placeholder="Filter tasks..."
+              placeholder="Buscar..."
               value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
               onChange={(event) =>
                 table.getColumn("title")?.setFilterValue(event.target.value)
@@ -53,14 +53,6 @@ export function DataTableToolbar<TData>({
             />
           )
         }
-        {/* <Input
-          placeholder="Filter tasks..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
-          }
-          className="h-8 w-[150px] lg:w-[250px]"
-        /> */}
         {hasStatus && table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
