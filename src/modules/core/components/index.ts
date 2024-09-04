@@ -1,3 +1,4 @@
 import { NavBarCustom } from './NavBarCustom/NavBarCustom'
+import { LoginComponent } from './Login/LoginComponent'
 
-export { NavBarCustom }
+export { NavBarCustom, LoginComponent }
