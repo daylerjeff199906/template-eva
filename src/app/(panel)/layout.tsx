@@ -73,7 +73,7 @@ export default function Layout(props: LayoutProps) {
     initialPath === 'teacher' ? menuItemsTeacher : menuItemsDirector
 
   return (
-    <main className="flex flex-col gap-1">
+    <main className="flex flex-col h-full">
       <NavBarCustom
         menuNavbar={menuNav}
         menuFooter={menuItems}
@@ -83,7 +83,7 @@ export default function Layout(props: LayoutProps) {
           roles: [{ label: 'Director', href: '/director' }],
         }}
       />
-      <article className="w-full">{children}</article>
+      <article className="w-full h-full">{children}</article>
     </main>
   )
 }
