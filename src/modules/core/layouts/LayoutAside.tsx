@@ -1,10 +1,6 @@
-interface ILayoutAsideProps {
-  aside: React.ReactNode
-  children: React.ReactNode
-  asidePosition?: 'left' | 'right'
-}
+import { LayoutAside } from '@/types'
 
-export const LayoutAsideSection = (props: ILayoutAsideProps) => {
+export const LayoutAsideSection = (props: LayoutAside.ILayoutAsideProps) => {
   const { aside, children, asidePosition = 'left' } = props
 
   return (
