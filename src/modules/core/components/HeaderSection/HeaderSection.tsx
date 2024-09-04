@@ -2,12 +2,14 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, Plus } from 'lucide-react'
 
 interface IHeaderSectionProps {
+  title?: string
+  subtitle?: string
   showBackButton?: boolean
   disableAddButton?: boolean
 }
 
 export const HeaderSection = (props: IHeaderSectionProps) => {
-  const { showBackButton, disableAddButton } = props
+  const { showBackButton, disableAddButton, subtitle, title } = props
   return (
     <main className="py-6 border-b">
       <section className="container flex justify-between items-center">
@@ -18,17 +20,18 @@ export const HeaderSection = (props: IHeaderSectionProps) => {
             </Button>
           )}
           <section>
-            <h1 className="text-2xl font-medium">Header section</h1>
-            <h2 className="text-sm text-gray-500">
-              This is a simple component that shows a header section with a
-              title and a subtitle
-            </h2>
+            <h1 className="text-2xl font-medium">
+              {title || 'Header Section'}
+            </h1>
+            <h2 className="text-sm text-gray-500">{subtitle || 'Subtitle'}</h2>
           </section>
+          <section id="left-section"></section>
         </div>
-        <div>
+        <div className="flex items-center gap-4">
+          <section id="right-section"></section>
           {!disableAddButton && (
             <Button>
-              <div className="flex gap-4">
+              <div className="flex gap-4 items-center">
                 <Plus size={20} />
                 <h3>Agregar</h3>
               </div>
