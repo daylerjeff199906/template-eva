@@ -1,4 +1,5 @@
 import * as MenuItems from './IMenuIten'
 import * as NavBar from './IMenuNavBar'
+import * as IHeaderSection from './IHeaderSection'
 
-export { MenuItems, NavBar }
+export type { MenuItems, NavBar, IHeaderSection }

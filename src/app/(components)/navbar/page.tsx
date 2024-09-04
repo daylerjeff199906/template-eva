@@ -1,4 +1,5 @@
-import { NavBarCustom } from '@/modules/core'
+import { HeaderSection, NavBarCustom } from '@/modules/core'
+import { LayoutAsideSection } from '@/modules/core/layouts'
 
 const options = [
   { href: '1', label: 'Option 1' },
@@ -30,6 +31,24 @@ export default function Page() {
           roles: options,
         }}
       />
+      <HeaderSection showBackButton />
+      <LayoutAsideSection
+        aside={
+          <section>
+            <h1>Este es el aside</h1>
+          </section>
+        }
+      >
+        <main>
+          <h1>Navbar</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+            voluptates, quia, voluptas, quos quidem quibusdam doloribus
+            necessitatibus autem quod nesciunt possimus. Quisquam, quas
+            voluptates. Quisquam, quas voluptates. Quisquam, quas voluptates.
+          </p>
+        </main>
+      </LayoutAsideSection>
     </div>
   )
 }
