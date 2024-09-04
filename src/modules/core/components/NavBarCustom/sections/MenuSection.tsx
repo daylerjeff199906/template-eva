@@ -1,7 +1,7 @@
-import { IMenuSectionProps } from '@/types'
+import { NavBar } from '@/types'
 import Link from 'next/link'
 
-export const MenuSection = (props: IMenuSectionProps) => {
+export const MenuSection = (props: NavBar.IMenuSectionProps) => {
   const { menuNavbar } = props
   return (
     <div className="flex gap-2 items-center">

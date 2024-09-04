@@ -1,7 +1,7 @@
-import { IItemLink } from '@/types'
+import { MenuItems } from '@/types'
 import Link from 'next/link'
 
-export const ItemLink = (props: IItemLink) => {
+export const ItemLink = (props: MenuItems.IItemLink) => {
   const { label, href, isActived } = props
   return (
     <Link
