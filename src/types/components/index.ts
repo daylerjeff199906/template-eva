@@ -1,14 +1,4 @@
-import { IMenuItem, IItemLink } from './IMenuIten'
-import {
-  IMenuSectionProps,
-  IRolesSectionProps,
-  INavBarCustomProps,
-} from './ImenuNavBar'
+import * as MenuItems from './IMenuIten'
+import * as NavBar from './IMenuNavBar'
 
-export type {
-  IMenuItem,
-  IMenuSectionProps,
-  IItemLink,
-  IRolesSectionProps,
-  INavBarCustomProps,
-}
+export { MenuItems, NavBar }

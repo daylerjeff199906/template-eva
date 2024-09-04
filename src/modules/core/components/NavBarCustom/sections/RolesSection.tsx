@@ -7,9 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { IRolesSectionProps } from '@/types'
+import { NavBar } from '@/types'
 
-export const RolesSection = (props: IRolesSectionProps) => {
+export const RolesSection = (props: NavBar.IRolesSectionProps) => {
   const { options } = props
   return (
     <Select>

@@ -1,20 +1,20 @@
-import { IMenuItem } from '.'
+import { MenuItems } from '@/types'
 
 export interface IMenuSectionProps {
-  menuNavbar: IMenuItem[]
+  menuNavbar: MenuItems.IMenuItem[]
 }
 
 export interface IRolesSectionProps {
-  options: IMenuItem[]
+  options: MenuItems.IMenuItem[]
 }
 
 export interface INavBarCustomProps {
   disabledItemsFooter?: boolean
-  menuFooter?: IMenuItem[]
-  menuNavbar?: IMenuItem[]
+  menuFooter?: MenuItems.IMenuItem[]
+  menuNavbar?: MenuItems.IMenuItem[]
   user: {
     name: string
     email: string
-    roles: IMenuItem[]
+    roles: MenuItems.IMenuItem[]
   }
 }

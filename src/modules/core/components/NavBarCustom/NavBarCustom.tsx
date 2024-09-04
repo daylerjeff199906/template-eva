@@ -3,9 +3,9 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
 import { ItemLink, MenuSection, RolesSection } from './sections'
-import { IMenuItem, INavBarCustomProps } from '@/types'
+import { NavBar } from '@/types'
 
-export const NavBarCustom = (props: INavBarCustomProps) => {
+export const NavBarCustom = (props: NavBar.INavBarCustomProps) => {
   const { disabledItemsFooter, menuFooter, menuNavbar, user } = props
   const pathname = usePathname()
   return (
