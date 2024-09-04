@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
-import { ItemLink, RolesSection } from './sections'
+import { ItemLink, MenuSection, RolesSection } from './sections'
 
 const options = [
   { value: '1', label: 'Option 1' },
@@ -18,7 +18,7 @@ const menuNavbar = [
 ]
 
 const menuFooter = [
-  { label: 'Terminos y condiciones', href: '/terms' },
+  { label: 'Terminos y condiciones', href: '/navbar' },
   { label: 'Politicas de privacidad', href: '/privacy' },
   { label: 'Contacto', href: '/contact' },
 ]
@@ -54,17 +54,7 @@ export const NavBarCustom = (props: INavBarCustomProps) => {
           </div>
         </section>
         <section className="flex gap-6 items-center">
-          <div className="flex gap-2 items-center">
-            {menuNavbar.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="border py-2 px-3 rounded-md text-xs font-medium"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+          <MenuSection menuNavbar={menuNavbar} />
           <hr className="h-10 w-0.5 bg-gray-300" />
           <UserDropdown
             user="Pepito Perez"
