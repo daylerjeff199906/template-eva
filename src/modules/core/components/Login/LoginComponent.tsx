@@ -1,76 +1,83 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-export const LoginComponent = () => {
+interface LoginIProps {
+    goTo: string;
+    resetPassword: string;
+}
+
+export const LoginComponent = ({goTo = '/', resetPassword = '/'} : LoginIProps) => {
     return (
-        <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
-            <div className="hidden bg-muted lg:block">
+        <div className="flex h-screen w-full">
+            <div className="flex w-[65%] relative bg-muted">
                 <Image
                     src="/images/img-Login.webp"
                     alt="Image"
-                    width="1920"
-                    height="1080"
-                    className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+                    layout="fill"
+                    objectFit="cover"
+                    className="dark:brightness-[0.2] dark:grayscale"
                 />
             </div>
-            <div className="flex items-center justify-center py-12">
-                <div className="mx-auto grid w-[350px] gap-6">
-                    <div className="flex items-center justify-center">
+            <div className="flex flex-col w-[35%] items-center justify-center gap-8">
+                <div className="flex flex-col items-center justify-center gap-8">
+                    <div className="flex w-full items-center justify-center">
                         <Image
                             src="/images/logoGrel.webp"
                             alt="logo"
-                            width={180}
-                            height={140}
+                            width={220}
+                            height={300}
                         />
                     </div>
-                    <div className="grid gap-2 text-center">
-                        <h1 className="text-3xl font-bold">Login</h1>
+                    <div className="flex flex-col gap-2 text-center">
+                        <h1 className="text-3xl font-bold">Iniciar sesión</h1>
                         <p className="text-balance text-muted-foreground">
-                            Enter your email below to login to your account
+                            Ingrese sus credenciales por favor
                         </p>
                     </div>
-                    <div className="grid gap-4">
-                        <div className="grid gap-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input
-                                id="email"
-                                type="email"
-                                placeholder="m@example.com"
-                                required
-                            />
-                        </div>
-                        <div className="grid gap-2">
-                            <div className="flex items-center">
-                                <Label htmlFor="password">Password</Label>
-                                <Link
-                                    href="/forgot-password"
-                                    className="ml-auto inline-block text-sm underline"
-                                >
-                                    Forgot your password?
-                                </Link>
-                            </div>
-                            <Input id="password" type="password" required />
-                        </div>
+                </div>
+                <div className="flex w-full flex-col gap-4 px-16">
+                    <div className="flex flex-col gap-2">
+                        <Label htmlFor="email">Usuario</Label>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="Ingrese su usuario"
+                            required
+                        />
+                    </div>
+                    <div className="grid gap-2">
+                        <Label htmlFor="password">Contraseña</Label>
+                        <Input
+                            id="password"
+                            type="password"
+                            placeholder="Ingrese su contraseña"
+                            required
+                        />
+                        <br />
                         <Button type="submit" className="w-full">
                             Login
                         </Button>
-                        <Button variant="outline" className="w-full">
-                            Login with Google
-                        </Button>
                     </div>
-                    <div className="mt-4 text-center text-sm">
-                        Don&apos;t have an account?{" "}
-                        <Link href="#" className="underline">
-                            Sign up
+                    <div className="flex items-center justify-between">
+                        <p className="text-sm">¿Olvidaste tu contraseña?</p>
+                        <Link
+                            href={resetPassword}
+                            className="ml-auto inline-block text-sm underline text-green-800"
+                        >
+                            Recuperar Contraseña
                         </Link>
                     </div>
                 </div>
+                <div className="text-center">
+                    <Link href={goTo} className="underline text-green-800">
+                        Volver a inicio
+                    </Link>
+                </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
