@@ -2,17 +2,9 @@
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 
 import Link from 'next/link'
+import { RolesSection } from './sections'
 
 const options = [
   { value: '1', label: 'Option 1' },
@@ -59,24 +51,7 @@ export const NavBarCustom = (props: INavBarCustomProps) => {
             id="user-roles"
             className="w-full max-w-xs min-w-[180px]"
           >
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a fruit" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Roles</SelectLabel>
-                  {options.map((option) => (
-                    <SelectItem
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <RolesSection options={options} />
           </div>
         </section>
         <section className="flex gap-6 items-center">
