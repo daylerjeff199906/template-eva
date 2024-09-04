@@ -6,10 +6,12 @@ interface IHeaderSectionProps {
   subtitle?: string
   showBackButton?: boolean
   disableAddButton?: boolean
+  labelAddButton?: string
 }
 
 export const HeaderSection = (props: IHeaderSectionProps) => {
-  const { showBackButton, disableAddButton, subtitle, title } = props
+  const { showBackButton, disableAddButton, subtitle, title, labelAddButton } =
+    props
   return (
     <main className="py-6 border-b">
       <section className="container flex justify-between items-center">
@@ -33,7 +35,7 @@ export const HeaderSection = (props: IHeaderSectionProps) => {
             <Button>
               <div className="flex gap-4 items-center">
                 <Plus size={20} />
-                <h3>Agregar</h3>
+                <h3>{labelAddButton || 'Create'}</h3>
               </div>
             </Button>
           )}
