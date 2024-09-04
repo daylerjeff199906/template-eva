@@ -1,6 +1,8 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Plus } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface IHeaderSectionProps {
   title?: string
@@ -24,13 +26,19 @@ export const HeaderSection = (props: IHeaderSectionProps) => {
     renderRightSection,
     hrefAddButton,
   } = props
+  const router = useRouter()
+
+  const handleBack = () => router.back()
 
   return (
     <main className="py-6 border-b">
       <section className="container flex justify-between items-center">
         <div className="flex gap-3">
           {showBackButton && (
-            <Button className="py-1 px-2 bg-transparent border text-gray-500 hover:bg-gray-100">
+            <Button
+              className="py-1 px-2 bg-transparent border text-gray-500 hover:bg-gray-100"
+              onClick={handleBack}
+            >
               <ArrowLeft size={20} />
             </Button>
           )}
