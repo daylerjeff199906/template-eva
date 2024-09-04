@@ -1,11 +1,21 @@
+'use client'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { UserDropdown } from '@/modules/core'
+import { ItemLink, MenuSection, RolesSection } from './sections'
+import { NavBar } from '@/types'
 
-export const NavBarCustom = () => {
+export const NavBarCustom = (props: NavBar.INavBarCustomProps) => {
+  const { disabledItemsFooter, menuFooter, menuNavbar, user } = props
+  const pathname = usePathname()
   return (
-    <nav>
-      <main className="container flex justify-between">
-        <section>
-          <div>
+    <nav className="flex flex-col">
+      <main className="container flex justify-between py-2 items-center">
+        <section className="flex gap-4 items-center">
+          <div
+            id="section-brand"
+            className="w-full min-w-[140px]"
+          >
             <Image
               src="/images/logoGrel.webp"
               alt="logo"
@@ -13,16 +23,36 @@ export const NavBarCustom = () => {
               height={100}
             />
           </div>
-        </section>
-        <section className="flex gap-6">
-          <div className="flex">
-            <a href="#">Home</a>
-            <a href="#">Home</a>
-            <a href="#">Home</a>
+          <hr className="h-10 w-0.5 bg-gray-300" />
+          <div
+            id="user-roles"
+            className="w-full max-w-xs min-w-[180px]"
+          >
+            {user && <RolesSection options={user?.roles} />}
           </div>
-          <div></div>
+        </section>
+        <section className="flex gap-6 items-center">
+          {menuNavbar && <MenuSection menuNavbar={menuNavbar} />}
+          <hr className="h-10 w-0.5 bg-gray-300" />
+          {user && (
+            <UserDropdown
+              user={user.name}
+              description={user.email}
+            />
+          )}
         </section>
       </main>
+      {!disabledItemsFooter && (
+        <footer className="flex border-b">
+          {menuFooter?.map((item) => (
+            <ItemLink
+              key={item.label}
+              {...item}
+              isActived={pathname === item.href}
+            />
+          ))}
+        </footer>
+      )}
     </nav>
   )
 }
