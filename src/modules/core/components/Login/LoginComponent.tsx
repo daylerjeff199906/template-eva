@@ -41,10 +41,10 @@ export const LoginComponent = ({goTo = '/', resetPassword = '/'} : LoginIProps) 
                 </div>
                 <div className="flex w-full flex-col gap-4 px-16">
                     <div className="flex flex-col gap-2">
-                        <Label htmlFor="email">Usuario</Label>
+                        <Label htmlFor="text">Usuario</Label>
                         <Input
-                            id="email"
-                            type="email"
+                            id="text"
+                            type="text"
                             placeholder="Ingrese su usuario"
                             required
                         />
