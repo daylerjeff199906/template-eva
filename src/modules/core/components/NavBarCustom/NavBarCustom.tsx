@@ -31,11 +31,11 @@ const menuFooter = [
 ]
 
 interface IProps {
-  disabledItemsFoote?: boolean
+  disabledItemsFooter?: boolean
 }
 
 export const NavBarCustom = (props: IProps) => {
-  const { disabledItemsFoote } = props
+  const { disabledItemsFooter } = props
   return (
     <nav className="flex flex-col">
       <main className="container flex justify-between py-2 items-center">
@@ -95,19 +95,36 @@ export const NavBarCustom = (props: IProps) => {
           />
         </section>
       </main>
-      {!disabledItemsFoote && (
+      {!disabledItemsFooter && (
         <footer className="flex border-b">
           {menuFooter.map((item) => (
-            <Link
+            <ItemLink
               key={item.label}
-              href={item.href}
-              className="border-b py-2 px-3 rounded-md text-xs font-semibold"
-            >
-              {item.label}
-            </Link>
+              {...item}
+            />
           ))}
         </footer>
       )}
     </nav>
+  )
+}
+
+interface IItemLink {
+  label: string
+  href: string
+  isActived?: boolean
+}
+
+const ItemLink = (props: IItemLink) => {
+  const { label, href, isActived } = props
+  return (
+    <Link
+      href={href}
+      className={`border-b py-2 px-3 text-xs  ${
+        isActived ? 'font-bold border-b-black' : 'font-semibold '
+      }`}
+    >
+      {label}
+    </Link>
   )
 }
