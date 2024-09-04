@@ -1,4 +1,6 @@
+'use client'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
 import {
   Select,
@@ -30,12 +32,13 @@ const menuFooter = [
   { label: 'Contacto', href: '/contact' },
 ]
 
-interface IProps {
+interface INavBarCustomProps {
   disabledItemsFooter?: boolean
 }
 
-export const NavBarCustom = (props: IProps) => {
+export const NavBarCustom = (props: INavBarCustomProps) => {
   const { disabledItemsFooter } = props
+  const pathname = usePathname()
   return (
     <nav className="flex flex-col">
       <main className="container flex justify-between py-2 items-center">
@@ -101,6 +104,7 @@ export const NavBarCustom = (props: IProps) => {
             <ItemLink
               key={item.label}
               {...item}
+              isActived={pathname === item.href}
             />
           ))}
         </footer>
