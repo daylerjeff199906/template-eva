@@ -4,6 +4,7 @@ import { promises as fs } from "fs";
 import { DataTable } from "@/modules/core";
 import { columns } from "./column/columns";
 import { taskSchema } from "@/utils/data/schema";
+import { priorities, statuses } from "@/utils";
 
 // Simulate a database read for tasks.
 async function getTasks() {
@@ -19,15 +20,17 @@ async function getTasks() {
 export default async function DemoPage() {
   const tasks = await getTasks();
 
-
   return (
     <div className="container mx-auto py-10">
       <DataTable
         columns={columns}
         data={tasks}
-        hasColumnFilters={false}
-        hasPagination={false}
+        hasPagination={true}
+        hasToolbar={true}
+        statusOptions={statuses}
         hasSearch={false}
+        hasColumnFilters={false}
+        priorityOptions={priorities}
       />
     </div>
   );

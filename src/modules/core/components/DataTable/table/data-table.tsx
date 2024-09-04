@@ -83,7 +83,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="space-y-4">
+    <div className={statusOptions || hasSearch || hasColumnFilters ? "space-y-4 p-4 bg-white" : ""}>
       {hasToolbar && (
         <DataTableToolbar
           table={table}
@@ -95,14 +95,14 @@ export function DataTable<TData, TValue>({
           hasSearch={hasSearch}
         />
       )}
-      <div className="rounded-md border">
+      <div className="bg-white">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} colSpan={header.colSpan}>
+                    <TableHead key={header.id} colSpan={header.colSpan} className="font-bold text-black dark:text-gray-400">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -121,6 +121,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-800 border-none"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
