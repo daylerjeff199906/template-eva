@@ -2,15 +2,15 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Task } from "../data/schema";
 import { DataTableSections } from "@/modules/core";
+import { Task } from "@/utils/data/schema";
 
 const { DataTableRowActions } = DataTableSections;
 
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "id",
-    header: "Tasksdfsdf ID",
+    header: "Task ID",
   },
   {
     accessorKey: "title",

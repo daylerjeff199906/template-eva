@@ -1,14 +1,14 @@
-import { Task, taskSchema } from "./data/schema";
 import path from "path";
 import { z } from "zod";
 import { promises as fs } from "fs";
 import { DataTable } from "@/modules/core";
 import { columns } from "./column/columns";
+import { taskSchema } from "@/utils/data/schema";
 
 // Simulate a database read for tasks.
 async function getTasks() {
   const data = await fs.readFile(
-    path.join(process.cwd(), "src/app/(components)/table/data/tasks.json")
+    path.join(process.cwd(), "src/utils/data/tasks.json")
   );
 
   const tasks = JSON.parse(data.toString());
