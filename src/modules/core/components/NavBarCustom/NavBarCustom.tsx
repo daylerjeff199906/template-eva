@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { UserDropdown } from '@/modules/core'
 import {
   Select,
   SelectContent,
@@ -74,7 +75,7 @@ export const NavBarCustom = (props: IProps) => {
             </Select>
           </div>
         </section>
-        <section className="flex gap-6">
+        <section className="flex gap-6 items-center">
           <div className="flex gap-2 items-center">
             {menuNavbar.map((item) => (
               <Link
@@ -87,7 +88,10 @@ export const NavBarCustom = (props: IProps) => {
             ))}
           </div>
           <hr className="h-10 w-0.5 bg-gray-300" />
-          <div></div>
+          <UserDropdown
+            user="Pepito Perez"
+            description="pepe@gmail.edu.pe"
+          />
         </section>
       </main>
       {!disabledItemsFoote && (
