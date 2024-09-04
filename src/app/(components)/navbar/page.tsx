@@ -30,7 +30,7 @@ export default function Page() {
           roles: options,
         }}
       />
-      <HeaderSection />
+      <HeaderSection showBackButton />
     </div>
   )
 }
