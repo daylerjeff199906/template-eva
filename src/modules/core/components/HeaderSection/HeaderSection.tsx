@@ -21,7 +21,7 @@ export const HeaderSection = (props: IHeaderSection.IHeaderSectionProps) => {
   const handleBack = () => router.back()
 
   return (
-    <main className="py-6 border-b">
+    <main className="py-6 border-b bg-white">
       <section className="container flex justify-between items-center">
         <div className="flex gap-3">
           {showBackButton && (
