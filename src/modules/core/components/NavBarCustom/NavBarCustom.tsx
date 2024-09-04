@@ -9,8 +9,8 @@ export const NavBarCustom = (props: NavBar.INavBarCustomProps) => {
   const { disabledItemsFooter, menuFooter, menuNavbar, user } = props
   const pathname = usePathname()
   return (
-    <nav className="flex flex-col">
-      <main className="container flex justify-between py-2 items-center">
+    <nav className="">
+      <main className="container flex justify-between py-2 items-center min-h-16 h-16 max-h-16">
         <section className="flex gap-4 items-center">
           <div
             id="section-brand"
