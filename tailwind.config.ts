@@ -35,6 +35,20 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        'gable-green': {
+          default: '#1C3B36',
+          50: '#f3faf8',
+          100: '#d6f1e8',
+          200: '#ace3d3',
+          300: '#7bcdb8',
+          400: '#50b19c',
+          500: '#369682',
+          600: '#29786a',
+          700: '#246156',
+          800: '#214e47',
+          900: '#1c3b36',
+          950: '#0d2624',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
