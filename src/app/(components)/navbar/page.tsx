@@ -1,4 +1,4 @@
-import { NavBarCustom } from '@/modules/core'
+import { HeaderSection, NavBarCustom } from '@/modules/core'
 
 const options = [
   { href: '1', label: 'Option 1' },
@@ -30,6 +30,7 @@ export default function Page() {
           roles: options,
         }}
       />
+      <HeaderSection />
     </div>
   )
 }
