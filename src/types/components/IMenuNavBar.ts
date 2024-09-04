@@ -5,5 +5,16 @@ export interface IMenuSectionProps {
 }
 
 export interface IRolesSectionProps {
-  options: { label: string; value: string }[]
+  options: IMenuItem[]
+}
+
+export interface INavBarCustomProps {
+  disabledItemsFooter?: boolean
+  menuFooter?: IMenuItem[]
+  menuNavbar?: IMenuItem[]
+  user: {
+    name: string
+    email: string
+    roles: IMenuItem[]
+  }
 }

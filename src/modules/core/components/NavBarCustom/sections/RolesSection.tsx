@@ -21,8 +21,8 @@ export const RolesSection = (props: IRolesSectionProps) => {
           <SelectLabel>Roles</SelectLabel>
           {options.map((option) => (
             <SelectItem
-              key={option.value}
-              value={option.value}
+              key={option.href}
+              value={option.href}
             >
               {option.label}
             </SelectItem>

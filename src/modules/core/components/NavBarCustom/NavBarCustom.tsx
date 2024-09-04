@@ -3,31 +3,39 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
 import { ItemLink, MenuSection, RolesSection } from './sections'
+import { IMenuItem } from '@/types'
 
-const options = [
-  { value: '1', label: 'Option 1' },
-  { value: '2', label: 'Option 2' },
-  { value: '3', label: 'Option 3' },
-]
+// const options = [
+//   { value: '1', label: 'Option 1' },
+//   { value: '2', label: 'Option 2' },
+//   { value: '3', label: 'Option 3' },
+// ]
 
-const menuNavbar = [
-  { label: 'Feddback', href: '/feedback' },
-  { label: 'Historial', href: '/history' },
-  { label: 'ayuda', href: '/help' },
-]
+// const menuNavbar = [
+//   { label: 'Feddback', href: '/feedback' },
+//   { label: 'Historial', href: '/history' },
+//   { label: 'ayuda', href: '/help' },
+// ]
 
-const menuFooter = [
-  { label: 'Terminos y condiciones', href: '/navbar' },
-  { label: 'Politicas de privacidad', href: '/privacy' },
-  { label: 'Contacto', href: '/contact' },
-]
+// const menuFooter = [
+//   { label: 'Terminos y condiciones', href: '/navbar' },
+//   { label: 'Politicas de privacidad', href: '/privacy' },
+//   { label: 'Contacto', href: '/contact' },
+// ]
 
 interface INavBarCustomProps {
   disabledItemsFooter?: boolean
+  menuFooter?: IMenuItem[]
+  menuNavbar?: IMenuItem[]
+  user: {
+    name: string
+    email: string
+    roles: IMenuItem[]
+  }
 }
 
 export const NavBarCustom = (props: INavBarCustomProps) => {
-  const { disabledItemsFooter } = props
+  const { disabledItemsFooter, menuFooter, menuNavbar, user } = props
   const pathname = usePathname()
   return (
     <nav className="flex flex-col">
@@ -49,21 +57,23 @@ export const NavBarCustom = (props: INavBarCustomProps) => {
             id="user-roles"
             className="w-full max-w-xs min-w-[180px]"
           >
-            <RolesSection options={options} />
+            {user && <RolesSection options={user?.roles} />}
           </div>
         </section>
         <section className="flex gap-6 items-center">
-          <MenuSection menuNavbar={menuNavbar} />
+          {menuNavbar && <MenuSection menuNavbar={menuNavbar} />}
           <hr className="h-10 w-0.5 bg-gray-300" />
-          <UserDropdown
-            user="Pepito Perez"
-            description="pepe@gmail.edu.pe"
-          />
+          {user && (
+            <UserDropdown
+              user={user.name}
+              description={user.email}
+            />
+          )}
         </section>
       </main>
       {!disabledItemsFooter && (
         <footer className="flex border-b">
-          {menuFooter.map((item) => (
+          {menuFooter?.map((item) => (
             <ItemLink
               key={item.label}
               {...item}
