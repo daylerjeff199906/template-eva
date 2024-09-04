@@ -1,10 +1,9 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserDropdown } from '@/modules/core'
-
-import Link from 'next/link'
-import { RolesSection } from './sections'
+import { ItemLink, RolesSection } from './sections'
 
 const options = [
   { value: '1', label: 'Option 1' },
@@ -85,25 +84,5 @@ export const NavBarCustom = (props: INavBarCustomProps) => {
         </footer>
       )}
     </nav>
-  )
-}
-
-interface IItemLink {
-  label: string
-  href: string
-  isActived?: boolean
-}
-
-const ItemLink = (props: IItemLink) => {
-  const { label, href, isActived } = props
-  return (
-    <Link
-      href={href}
-      className={`border-b py-2 px-3 text-xs  ${
-        isActived ? 'font-bold border-b-black' : 'font-semibold '
-      }`}
-    >
-      {label}
-    </Link>
   )
 }
