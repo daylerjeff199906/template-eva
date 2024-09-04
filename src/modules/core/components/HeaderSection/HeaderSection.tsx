@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Plus } from 'lucide-react'
+import Link from 'next/link'
 
 interface IHeaderSectionProps {
   title?: string
@@ -9,6 +10,7 @@ interface IHeaderSectionProps {
   labelAddButton?: string
   renderLeftSection?: React.ReactNode
   renderRightSection?: React.ReactNode
+  hrefAddButton?: string
 }
 
 export const HeaderSection = (props: IHeaderSectionProps) => {
@@ -20,6 +22,7 @@ export const HeaderSection = (props: IHeaderSectionProps) => {
     labelAddButton,
     renderLeftSection,
     renderRightSection,
+    hrefAddButton,
   } = props
 
   return (
@@ -51,11 +54,14 @@ export const HeaderSection = (props: IHeaderSectionProps) => {
             <section id="right-section">{renderRightSection}</section>
           )}
           {!disableAddButton && (
-            <Button>
-              <div className="flex gap-4 items-center">
+            <Button asChild>
+              <Link
+                className="flex gap-4 items-center"
+                href={hrefAddButton || '/'}
+              >
                 <Plus size={20} />
                 <h3>{labelAddButton || 'Create'}</h3>
-              </div>
+              </Link>
             </Button>
           )}
         </div>
