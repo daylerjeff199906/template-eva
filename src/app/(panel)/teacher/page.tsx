@@ -1,8 +1,15 @@
+import { LayoutAsideSection } from "@/modules/core";
+import { AsideTeacher, HeaderSearch, TeacherTable } from "@/modules/teacher";
+
 export default function Page() {
   return (
-    <div>
-      <h1>Teacher</h1>
-      <p>Here will come the teachers pages</p>
+    <div className="container">
+      <HeaderSearch />
+      <LayoutAsideSection aside={<AsideTeacher />} asidePosition="left">
+        <main>
+          <TeacherTable />
+        </main>
+      </LayoutAsideSection>
     </div>
-  )
+  );
 }
