@@ -1,12 +1,6 @@
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { SearchInput } from "./SearchInput";
+import { SearchInput } from "../search-input/SearchInput";
+import { SearchOptions } from "../SelectOptions";
 
 interface IAsideTeacherProps {
   hasSearch?: boolean;
@@ -31,15 +25,7 @@ export const AsideTeacher = (props: IAsideTeacherProps) => {
           </section>
           <section className="space-y-2">
             <span className="text-sm text-gray-800 w-full">Estado</span>
-            <Select>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Estado" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="completo">Completo</SelectItem>
-                <SelectItem value="pendiente">Pendiente</SelectItem>
-              </SelectContent>
-            </Select>
+            <SearchOptions />
           </section>
         </div>
       </div>

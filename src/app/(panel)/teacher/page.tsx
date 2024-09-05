@@ -1,7 +1,5 @@
 import { LayoutAsideSection } from "@/modules/core";
-import { AsideTeacher } from "@/modules/teacher/components/AsideCard";
-import { SearchOptions } from "@/modules/teacher/components/SelectOption";
-import TeacherTable from "@/modules/teacher/components/TeacherTable";
+import { AsideTeacher, SearchOptions, TeacherTable } from "@/modules/teacher";
 
 export default function Page() {
   return (

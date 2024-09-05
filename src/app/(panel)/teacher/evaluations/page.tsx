@@ -1,6 +1,5 @@
 import { HeaderSection, LayoutAsideSection } from "@/modules/core";
-import { AsideTeacher } from "@/modules/teacher/components/AsideCard";
-import TeacherTable from "@/modules/teacher/components/TeacherTable";
+import { AsideTeacher, TeacherTable } from "@/modules/teacher";
 
 export default function Page() {
 
