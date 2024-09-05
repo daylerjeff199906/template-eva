@@ -1,10 +1,10 @@
 import { LayoutAsideSection } from "@/modules/core";
-import { AsideTeacher, SearchOptions, TeacherTable } from "@/modules/teacher";
+import { AsideTeacher, HeaderSearch, TeacherTable } from "@/modules/teacher";
 
 export default function Page() {
   return (
     <div className="container">
-      <SearchOptions />
+      <HeaderSearch />
       <LayoutAsideSection aside={<AsideTeacher />} asidePosition="left">
         <main>
           <TeacherTable />
