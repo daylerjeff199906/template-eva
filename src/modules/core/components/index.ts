@@ -6,5 +6,8 @@ import { CardGroup } from './CardGroup/CardGroup'
 import { DataTable } from './DataTable/table'
 import * as DataTableComponents from './DataTable/sections'
 import * as DataTableSections from './DataTable/sections'
+import { UserProfile } from './UserProfile/UserProfile'
+import { UserContact } from './UserProfile/UserContact';
 
-export { NavBarCustom, UserDropdown, HeaderSection, LoginComponent, CardGroup, DataTableComponents, DataTable, DataTableSections }
+
+export { NavBarCustom, UserDropdown, HeaderSection, LoginComponent, CardGroup, DataTableComponents, DataTable, DataTableSections, UserProfile, UserContact }
