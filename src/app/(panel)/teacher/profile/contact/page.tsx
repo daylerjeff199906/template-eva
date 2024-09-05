@@ -1,4 +1,4 @@
-import { HeaderSection, UserProfile } from '@/modules/core'
+import { HeaderSection, UserContact } from '@/modules/core'
 
 export default function Page() {
   return (
@@ -8,7 +8,7 @@ export default function Page() {
         subtitle="Registrar, actualizar datos relevantes de mi usuario"
         disableAddButton
       />
-      <UserProfile/>
+      <UserContact/>
     </main>
   )
 }
