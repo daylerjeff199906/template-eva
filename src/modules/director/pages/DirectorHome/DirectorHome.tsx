@@ -1,8 +1,13 @@
+import { LayoutAsideSection } from '@/modules/core'
+import { DetailsSection, FiltersAside, RecentList } from './sections'
+
 export const DirectorHome = () => {
   return (
     <main>
-      <section></section>
-      <section></section>
+      <DetailsSection />
+      <LayoutAsideSection aside={<FiltersAside />}>
+        <RecentList />
+      </LayoutAsideSection>
     </main>
   )
 }
