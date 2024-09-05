@@ -1,30 +1,12 @@
 'use client'
 
-import Link from "next/dist/client/link"
-import { LayoutAsideSection } from "../../layouts"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
 
 export const UserProfile = () => {
-    const pathname = usePathname()
-
-    console.log('pathname', pathname)
 
     return (
-        <LayoutAsideSection aside={<div className="flex flex-col p-5 gap-4 w-[286px] bg-white">
-            <h1 className="font-bold">Menu</h1>
-            <Link href={pathname} className={"hover:bg-slate-100 p-2" + buttonVariants({ variant: 'secondary' })}>
-                <span className="text-sm">
-
-                    Datos Personales
-                </span>
-            </Link>
-            <Link href={"/teacher/profile/contact"} className="hover:bg-slate-100 p-2 hover:border rounded-md text-sm">
-                Datos de Contacto
-            </Link>
-        </div>}>
             <div className="flex flex-col gap-6 w-full">
                 <form className="flex flex-col gap-4 p-8 w-full bg-white">
                     <div>
@@ -73,7 +55,5 @@ export const UserProfile = () => {
                     <Button className="h-10">Guardar datos</Button>
                 </div>
             </div>
-        </LayoutAsideSection>
-
     )
 }
