@@ -8,10 +8,12 @@ export const DocentesList = () => {
         subtitle="Añada los docentes que están disponibles para realizar las evaluaciones"
         labelAddButton="Agregar docente"
       />
-      <DataTable
-        columns={[]}
-        data={[]}
-      />
+      <section className="container">
+        <DataTable
+          columns={[]}
+          data={[]}
+        />
+      </section>
     </main>
   )
 }
