@@ -3,7 +3,7 @@ import { DetailsSection, FiltersAside, RecentList } from './sections'
 
 export const DirectorHome = () => {
   return (
-    <main>
+    <main className="flex flex-col gap-6 pt-6">
       <DetailsSection />
       <LayoutAsideSection aside={<FiltersAside />}>
         <RecentList />
