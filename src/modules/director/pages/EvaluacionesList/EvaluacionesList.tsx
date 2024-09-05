@@ -6,7 +6,7 @@ export const EvaluacionesList = () => {
       <HeaderSection
         title="Evaluaciones registradas"
         subtitle="Registro de evaluaciones ya registradas durante por lor docentes"
-        labelAddButton="Crear evaluación"
+        disableAddButton
       />
       <section className="container">
         <DataTable
