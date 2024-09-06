@@ -39,7 +39,7 @@ export default function NewEvaluation() {
             description={course.time}
             progress={course.status}
             states={course.status > 0}
-            href={`/teacher/evaluations/${course.id}`}
+            href={`/teacher/evaluations/new/${course.id}`}
           />
         ))}
       </main>
