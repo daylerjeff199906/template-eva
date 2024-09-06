@@ -4,14 +4,15 @@ import { useMemo, useState } from 'react'
 import 'react-data-grid/lib/styles.css'
 import DataGrid, {
   Column,
-  SelectCellFormatter,
+  ColumnOrColumnGroup,
+  // SelectCellFormatter,
   SelectColumn,
   SortColumn,
   textEditor,
 } from 'react-data-grid'
 
-import type { Direction } from './types'
-import type { Props } from './props'
+// import type { Direction } from './types'
+// import type { Props } from './props'
 // import { textEditorClassname } from './TextEditor'
 
 import { faker } from '@faker-js/faker'
@@ -43,11 +44,11 @@ import { faker } from '@faker-js/faker'
 //   }
 // `;
 
-const dateFormatter = new Intl.DateTimeFormat(navigator.language)
-const currencyFormatter = new Intl.NumberFormat(navigator.language, {
-  style: 'currency',
-  currency: 'eur',
-})
+// const dateFormatter = new Intl.DateTimeFormat(navigator.language)
+// const currencyFormatter = new Intl.NumberFormat(navigator.language, {
+//   style: 'currency',
+//   currency: 'eur',
+// })
 
 interface SummaryRow {
   id: string
@@ -74,7 +75,7 @@ interface Row {
   //   available: boolean
 }
 
-function getColumns(): readonly Column<Row, SummaryRow>[] {
+function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
   return [
     SelectColumn,
     {
@@ -87,6 +88,13 @@ function getColumns(): readonly Column<Row, SummaryRow>[] {
       },
     },
     {
+      key: 'number_doc',
+      name: 'N° Documento',
+      width: 'max-content',
+      draggable: true,
+      renderEditCell: textEditor,
+    },
+    {
       key: 'student',
       name: 'Alumno',
       width: 'max-content',
@@ -94,63 +102,29 @@ function getColumns(): readonly Column<Row, SummaryRow>[] {
       renderEditCell: textEditor,
     },
     {
-      key: 'area',
-      name: 'Area',
+      key: 'progress',
+      name: 'Progress',
+      draggable: true,
       renderEditCell: textEditor,
     },
-    // {
-    //   key: 'contact',
-    //   name: 'Contact',
-    //   renderEditCell: textEditor,
-    // },
-    // {
-    //   key: 'assignee',
-    //   name: 'Assignee',
-    //   renderEditCell: textEditor,
-    // },
-    // {
-    //   key: 'startTimestamp',
-    //   name: 'Start date',
-    //   renderCell(props) {
-    //     return dateFormatter.format(props.row.startTimestamp)
-    //   },
-    // },
-    // {
-    //   key: 'endTimestamp',
-    //   name: 'Deadline',
-    //   renderCell(props) {
-    //     return dateFormatter.format(props.row.endTimestamp)
-    //   },
-    // },
-    // {
-    //   key: 'budget',
-    //   name: 'Budget',
-    //   renderCell(props) {
-    //     return currencyFormatter.format(props.row.budget)
-    //   },
-    // },
-    // {
-    //   key: 'transaction',
-    //   name: 'Transaction type',
-    // },
-    // {
-    //   key: 'available',
-    //   name: 'Available',
-    //   renderCell({ row, onRowChange, tabIndex }) {
-    //     return (
-    //       <SelectCellFormatter
-    //         value={row.available}
-    //         onChange={() => {
-    //           onRowChange({ ...row, available: !row.available })
-    //         }}
-    //         tabIndex={tabIndex}
-    //       />
-    //     )
-    //   },
-    //   renderSummaryCell({ row: { yesCount, totalCount } }) {
-    //     return `${Math.floor((100 * yesCount) / totalCount)}% ✔️`
-    //   },
-    // },
+    {
+      key: 'progress2',
+      name: 'Progress2',
+      draggable: true,
+      renderEditCell: textEditor,
+    },
+    {
+      key: 'progress3',
+      name: 'Progress3',
+      draggable: true,
+      renderEditCell: textEditor,
+    },
+    {
+      key: 'progress4',
+      name: 'Progress4',
+      draggable: true,
+      renderEditCell: textEditor,
+    },
   ]
 }
 
@@ -162,24 +136,15 @@ function createRows(): readonly Row[] {
   //   const now = Date.now()
   const rows: Row[] = []
 
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 500; i++) {
     rows.push({
       id: i,
-      student: faker.person.fullName(),
+      student: faker.person.fullName() + ' ' + faker.person.lastName(),
       number_doc: Math.random().toString(36).substring(7),
       progress: Math.random() * 100,
       progress2: Math.random() * 100,
       progress3: Math.random() * 100,
       progress4: Math.random() * 100,
-      //   area: faker.person.jobArea(),
-      //   contact: faker.internet.exampleEmail(),
-      //   assignee: faker.person.fullName(),
-      //   progress: Math.random() * 100,
-      //   startTimestamp: now - Math.round(Math.random() * 1e10),
-      //   endTimestamp: now + Math.round(Math.random() * 1e10),
-      //   budget: 500 + Math.random() * 10500,
-      //   transaction: faker.finance.transactionType(),
-      //   available: Math.random() > 0.5,
     })
   }
 
@@ -194,29 +159,18 @@ function getComparator(sortColumn: string): Comparator {
       return (a, b) => {
         return a.id - b.id
       }
-    // case 'assignee':
-    // case 'title':
-    // case 'client':
-    // case 'area':
-    // case 'country':
-    // case 'contact':
-    // case 'transaction':
-    // case 'account':
-    // case 'version':
-    //   return (a, b) => {
-    //     return a[sortColumn].localeCompare(b[sortColumn])
-    //   }
-    // case 'available':
-    //   return (a, b) => {
-    //     return a[sortColumn] === b[sortColumn] ? 0 : a[sortColumn] ? 1 : -1
-    //   }
-    // case 'progress':
-    // case 'startTimestamp':
-    // case 'endTimestamp':
-    // case 'budget':
-    //   return (a, b) => {
-    //     return a[sortColumn] - b[sortColumn]
-    //   }
+    case 'student':
+    case 'number_doc':
+      return (a, b) => {
+        return a[sortColumn].localeCompare(b[sortColumn])
+      }
+    case 'progress':
+    case 'progress2':
+    case 'progress3':
+    case 'progress4':
+      return (a, b) => {
+        return a[sortColumn] - b[sortColumn]
+      }
     default:
       throw new Error(`unsupported sortColumn: "${sortColumn}"`)
   }
@@ -230,16 +184,6 @@ export const EvaluationTable = () => {
   )
 
   const columns = useMemo(() => getColumns(), [])
-
-  //   const summaryRows = useMemo((): readonly SummaryRow[] => {
-  //     return [
-  //       {
-  //         id: 'total_0',
-  //         totalCount: rows.length,
-  //         yesCount: rows.filter((r) => r.available).length,
-  //       },
-  //     ]
-  //   }, [rows])
 
   const sortedRows = useMemo((): readonly Row[] => {
     if (sortColumns.length === 0) return rows
@@ -259,7 +203,7 @@ export const EvaluationTable = () => {
   const gridElement = (
     <DataGrid
       rowKeyGetter={rowKeyGetter}
-      columns={columns}
+      columns={columns as Column<Row>[]}
       rows={sortedRows}
       defaultColumnOptions={{
         sortable: true,
