@@ -9,7 +9,7 @@ interface IProps {
 export const EvaluacionRender = (props: IProps) => {
   const { title } = props
   return (
-    <form>
+    <div>
       <HeaderSection
         title={`Evaluación - ${title}`}
         subtitle="Turno: Mañana"
@@ -28,7 +28,7 @@ export const EvaluacionRender = (props: IProps) => {
       <section className="h-full">
         <EvaluationTable />
       </section>
-    </form>
+    </div>
   )
 }
 

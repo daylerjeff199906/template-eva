@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { useMemo, useState } from 'react'
 import 'react-data-grid/lib/styles.css'
@@ -6,10 +5,8 @@ import DataGrid, {
   Column,
   ColumnOrColumnGroup,
   SelectColumn,
-  SortColumn,
   textEditor,
 } from 'react-data-grid'
-
 import { faker } from '@faker-js/faker'
 
 interface SummaryRow {
@@ -26,15 +23,6 @@ interface Row {
   progress2: number
   progress3: number
   progress4: number
-  //   area: string
-  //   contact: string
-  //   assignee: string
-  //   progress: number
-  //   startTimestamp: number
-  //   endTimestamp: number
-  //   budget: number
-  //   transaction: string
-  //   available: boolean
 }
 
 const optionsSelect = [
@@ -60,7 +48,7 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
     {
       key: 'number_doc',
       name: 'N° Documento',
-      width: 'max-content',
+      // width: 'max-content',
       draggable: true,
       frozen: true,
       renderEditCell: textEditor,
@@ -68,7 +56,7 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
     {
       key: 'student',
       name: 'Alumno',
-      width: 'max-content',
+      // width: 'max-content',
       draggable: true,
       frozen: true,
       renderEditCell: textEditor,
@@ -78,14 +66,7 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'Progress',
       draggable: true,
       renderEditCell: (p) => (
-        <select
-          autoFocus
-          // className={textEditorClassname}
-          // value={p.row.country}
-          // onChange={(e) =>
-          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
-          // }
-        >
+        <select autoFocus>
           {optionsSelect.map((option) => (
             <option
               key={option.value}
@@ -99,17 +80,10 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
     },
     {
       key: 'progress2',
-      name: 'Progress2',
+      name: 'Progress 2',
       draggable: true,
       renderEditCell: (p) => (
-        <select
-          autoFocus
-          // className={textEditorClassname}
-          // value={p.row.country}
-          // onChange={(e) =>
-          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
-          // }
-        >
+        <select autoFocus>
           {optionsSelect.map((option) => (
             <option
               key={option.value}
@@ -123,17 +97,10 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
     },
     {
       key: 'progress3',
-      name: 'Progress3',
+      name: 'Progress 3',
       draggable: true,
       renderEditCell: (p) => (
-        <select
-          autoFocus
-          // className={textEditorClassname}
-          // value={p.row.country}
-          // onChange={(e) =>
-          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
-          // }
-        >
+        <select autoFocus>
           {optionsSelect.map((option) => (
             <option
               key={option.value}
@@ -147,17 +114,10 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
     },
     {
       key: 'progress4',
-      name: 'Progress4',
+      name: 'Progress 4',
       draggable: true,
       renderEditCell: (p) => (
-        <select
-          autoFocus
-          // className={textEditorClassname}
-          // value={p.row.country}
-          // onChange={(e) =>
-          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
-          // }
-        >
+        <select autoFocus>
           {optionsSelect.map((option) => (
             <option
               key={option.value}
@@ -176,65 +136,75 @@ function rowKeyGetter(row: Row) {
   return row.id
 }
 
-function createRows(): readonly Row[] {
-  //   const now = Date.now()
+function createRows(count = 200): readonly Row[] {
   const rows: Row[] = []
-
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < count; i++) {
     rows.push({
       id: i + 1,
       number_doc: faker.phone.imei(),
       student: faker.person.fullName() + ' ' + faker.person.lastName(),
-      progress: Math.random() * 100,
-      progress2: Math.random() * 100,
-      progress3: Math.random() * 100,
-      progress4: Math.random() * 100,
+      progress: 1,
+      progress2: 1,
+      progress3: 1,
+      progress4: 1,
     })
   }
-
   return rows
 }
 
 export const EvaluationTable = () => {
-  const [rows, setRows] = useState(createRows)
-  const [selectedRows, setSelectedRows] = useState(
-    (): ReadonlySet<number> => new Set()
+  const [rows, setRows] = useState<readonly Row[]>([])
+  const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(
+    () => new Set()
   )
 
   const columns = useMemo(() => getColumns(), [])
 
-  const gridElement = (
-    <DataGrid
-      rowKeyGetter={rowKeyGetter}
-      columns={columns as Column<Row>[]}
-      rows={rows}
-      selectedRows={selectedRows}
-      onSelectedRowsChange={setSelectedRows}
-      onRowsChange={setRows}
-      className="fill-grid"
-      style={{
-        backgroundColor: 'white',
-        color: 'black',
-        colorScheme: 'light',
-      }}
-    />
-  )
+  // Función para agregar una nueva fila
+  const addRow = () => {
+    const newRow: Row = {
+      id: rows.length + 1,
+      number_doc: '',
+      student: '',
+      progress: 0,
+      progress2: 0,
+      progress3: 0,
+      progress4: 0,
+    }
+    setRows((prevRows) => [...prevRows, newRow])
+  }
+
+  // Función para eliminar filas seleccionadas
+  const deleteSelectedRows = () => {
+    setRows((prevRows) => prevRows.filter((row) => !selectedRows.has(row.id)))
+    setSelectedRows(new Set()) // Limpiar selección
+  }
 
   return (
-    <>
-      {/* <div className={toolbarClassname}>
-        <ExportButton
-          onExport={() => exportToCsv(gridElement, 'CommonFeatures.csv')}
+    <div>
+      <div className="actions">
+        <button onClick={addRow}>Agregar Fila</button>
+        <button
+          onClick={deleteSelectedRows}
+          disabled={selectedRows.size === 0}
         >
-          Export to CSV
-        </ExportButton>
-        <ExportButton
-          onExport={() => exportToPdf(gridElement, 'CommonFeatures.pdf')}
-        >
-          Export to PDF
-        </ExportButton>
-      </div> */}
-      {gridElement}
-    </>
+          Eliminar Filas Seleccionadas
+        </button>
+      </div>
+      <DataGrid
+        rowKeyGetter={rowKeyGetter}
+        columns={columns as Column<Row>[]}
+        rows={rows}
+        selectedRows={selectedRows}
+        onSelectedRowsChange={setSelectedRows}
+        onRowsChange={setRows}
+        className="fill-grid"
+        style={{
+          backgroundColor: 'white',
+          color: 'black',
+          colorScheme: 'light',
+        }}
+      />
+    </div>
   )
 }
