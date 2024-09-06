@@ -11,6 +11,7 @@
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
     "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -32,6 +33,7 @@
     "react-hook-form": "^7.53.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "template-eva": "file:",
     "zod": "^3.23.8"
   },
   "devDependencies": {
