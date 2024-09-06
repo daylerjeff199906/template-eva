@@ -1,6 +1,4 @@
-import { UserProfile } from "@/modules/core"
+import { UserProfile } from '@/modules/core'
 export default function Page() {
-  return (
-      <UserProfile/>
-  )
+  return <UserProfile />
 }
