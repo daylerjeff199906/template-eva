@@ -7,8 +7,8 @@ export default function Create() {
   return (
     <main>
       <HeaderSection
-        title="Perfil de usuario"
-        subtitle="Registrar, actualizar datos relevantes de mi usuario"
+        title="Agregar docente"
+        subtitle="Complete los campos para añadir un nuevo docente"
         disableAddButton
       />
       <FrmDocenteEditorPersonal />
