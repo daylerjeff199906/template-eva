@@ -1,26 +1,26 @@
-import { CardGroup, HeaderSection } from "@/modules/core";
+import { CardGroup, HeaderSection } from '@/modules/core'
 
 export default function NewEvaluation() {
   const courses = [
     {
       id: 1,
-      name: "Mathematics",
-      time: "Mañana",
+      name: 'Mathematics',
+      time: 'Mañana',
       status: 20,
     },
     {
       id: 2,
-      name: "Physics",
-      time: "Tarde",
+      name: 'Physics',
+      time: 'Tarde',
       status: 25,
     },
     {
       id: 3,
-      name: "Chemistry",
-      time: "Noche",
+      name: 'Chemistry',
+      time: 'Noche',
       status: 59,
     },
-  ];
+  ]
 
   return (
     <div className="flex flex-col space-y-8">
@@ -39,9 +39,10 @@ export default function NewEvaluation() {
             description={course.time}
             progress={course.status}
             states={course.status > 0}
+            href={`/teacher/evaluations/${course.id}`}
           />
         ))}
       </main>
     </div>
-  );
+  )
 }
