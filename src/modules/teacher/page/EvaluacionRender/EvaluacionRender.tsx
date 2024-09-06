@@ -1,4 +1,5 @@
 import { HeaderSection } from '@/modules/core'
+import { EvaluationTable } from '../../components'
 
 interface IProps {
   //next change type data
@@ -8,7 +9,7 @@ interface IProps {
 export const EvaluacionRender = (props: IProps) => {
   const { title } = props
   return (
-    <main>
+    <form>
       <HeaderSection
         title={`Evaluación - ${title}`}
         subtitle="Turno: Mañana"
@@ -24,7 +25,10 @@ export const EvaluacionRender = (props: IProps) => {
           <div></div>
         </main>
       </section>
-    </main>
+      <section className="h-full">
+        <EvaluationTable />
+      </section>
+    </form>
   )
 }
 
