@@ -8,6 +8,7 @@ import DataGrid, {
   textEditor,
 } from 'react-data-grid'
 import { faker } from '@faker-js/faker'
+import css from 'styled-jsx/css'
 
 interface SummaryRow {
   id: string
@@ -26,11 +27,41 @@ interface Row {
 }
 
 const optionsSelect = [
-  { value: '1', label: '1' },
-  { value: '2', label: '2' },
-  { value: '3', label: '3' },
-  { value: '4', label: '4' },
+  { value: '1', label: 'Valor 1' },
+  { value: '2', label: 'Valor 2' },
+  { value: '3', label: 'Valor 3' },
 ]
+
+const textEditorInternalClassname = css`
+  @layer rdg.TextEditor {
+    appearance: none;
+
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: 100%;
+    padding-block: 0;
+    padding-inline: 6px;
+    border: 2px solid #ccc;
+    vertical-align: top;
+    color: var(--rdg-color);
+    background-color: var(--rdg-background-color);
+
+    font-family: inherit;
+    font-size: var(--rdg-font-size);
+
+    &:focus {
+      border-color: var(--rdg-selection-color);
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #999;
+      opacity: 1;
+    }
+  }
+`
+
+export const textEditorClassname = `rdg-text-editor ${textEditorInternalClassname}`
 
 function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
   return [
@@ -66,14 +97,16 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'Progress',
       draggable: true,
       renderEditCell: (p) => (
-        <select autoFocus>
+        <select
+          autoFocus
+          className={textEditorClassname}
+          value={p.row.progress}
+          onChange={(e) =>
+            p.onRowChange({ ...p.row, progress: Number(e.target.value) }, true)
+          }
+        >
           {optionsSelect.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
-              {option.label}
-            </option>
+            <option key={option.value}>{option.label}</option>
           ))}
         </select>
       ),
@@ -83,7 +116,14 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'Progress 2',
       draggable: true,
       renderEditCell: (p) => (
-        <select autoFocus>
+        <select
+          autoFocus
+          className={textEditorClassname}
+          value={p.row.progress2}
+          onChange={(e) =>
+            p.onRowChange({ ...p.row, progress2: Number(e.target.value) }, true)
+          }
+        >
           {optionsSelect.map((option) => (
             <option
               key={option.value}
@@ -100,7 +140,14 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'Progress 3',
       draggable: true,
       renderEditCell: (p) => (
-        <select autoFocus>
+        <select
+          autoFocus
+          className={textEditorClassname}
+          value={p.row.progress3}
+          onChange={(e) =>
+            p.onRowChange({ ...p.row, progress3: Number(e.target.value) }, true)
+          }
+        >
           {optionsSelect.map((option) => (
             <option
               key={option.value}
@@ -117,7 +164,14 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'Progress 4',
       draggable: true,
       renderEditCell: (p) => (
-        <select autoFocus>
+        <select
+          autoFocus
+          className={textEditorClassname}
+          value={p.row.progress4}
+          onChange={(e) =>
+            p.onRowChange({ ...p.row, progress4: Number(e.target.value) }, true)
+          }
+        >
           {optionsSelect.map((option) => (
             <option
               key={option.value}
