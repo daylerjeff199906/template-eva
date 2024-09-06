@@ -16,6 +16,14 @@ export const EvaluacionRender = (props: IProps) => {
         showBackButton
         renderLeftSection={<RenderLeftSection />}
       />
+      <section className="py-4 bg-gable-green-100">
+        <main className="container">
+          <div>
+            <h2 className="text-sm font-semibold">Acciones</h2>
+          </div>
+          <div></div>
+        </main>
+      </section>
     </main>
   )
 }
