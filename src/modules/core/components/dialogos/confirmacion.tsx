@@ -1,40 +1,32 @@
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle} from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 interface DialogConfirmacionProps {
-    isOpen: boolean
-    onClose: () => void
-    tittle?: string
+    isOpenConfirm: boolean
+    onCloseConfirm: () => void
+    tittleConfirm?: string
     description?: string
-    onSubmit: () => void
+    onSubmitConfirm: () => void
     cancelLabel?: string
     aceppLabel?: string
 }
 
 export default function DialogConfirmacion(Props: DialogConfirmacionProps) {
     const {
-        isOpen,
-        onClose,
-        tittle = "Confirmar Evaluación",
+        isOpenConfirm,
+        onCloseConfirm,
+        tittleConfirm = "Confirmar Evaluación",
         description = "Está seguro de realizar la evaluación. Concuerda que los datos registrados son coherentes",
-        onSubmit,
+        onSubmitConfirm,
         cancelLabel = "Cancelar",
         aceppLabel = "Continuar",
     } = Props
+
     return (
-        <AlertDialog open={isOpen}>
+        <AlertDialog open={isOpenConfirm}>
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>
-                        {tittle}
+                        {tittleConfirm}
                     </AlertDialogTitle>
                     <AlertDialogDescription>
                         {description}
@@ -42,11 +34,12 @@ export default function DialogConfirmacion(Props: DialogConfirmacionProps) {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel asChild >
-                        <Button onClick={onClose} variant="secondary">
+                        <Button type="button" onClick={onCloseConfirm} variant="secondary"
+                            className="border-2 border-red-500 text-red-500 hover:bg-red-50 hover:text-red-500">
                             {cancelLabel}
                         </Button>
                     </AlertDialogCancel>
-                    <AlertDialogAction onClick={onSubmit}>
+                    <AlertDialogAction onClick={onSubmitConfirm}>
                         {aceppLabel}
                     </AlertDialogAction>
                 </AlertDialogFooter>

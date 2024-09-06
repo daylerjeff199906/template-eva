@@ -1,35 +1,15 @@
 "use client"
 import * as React from "react"
 import { Button } from "@/components/ui/button"
-import {
-    Dialog,
-    DialogContent,
-    DialogClose,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle} from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@/components/ui/command"
+import { Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
 
 const frameworks = [
     {
@@ -50,27 +30,50 @@ const frameworks = [
     },
 ]
 
-export default function DialogCategoria() {
+interface DialogNivelProps {
+    isOpenNivel: boolean
+    onCloseNivel: () => void
+    tittleNivel?: string
+    descriptionNivel?: string
+    onSubmitNivel: () => void
+    cancelLabelNivel?: string
+    aceppLabelNivel?: string
+    labelnameNivel?: string
+    labelmodalidadNivel?: string
+    labelCheckboxNivel?: string
+}
+
+export default function DialogCategoria(Props: DialogNivelProps) {
     const [open, setOpen] = React.useState(false)
     const [value, setValue] = React.useState("")
-
+    const {
+        isOpenNivel,
+        onCloseNivel,
+        tittleNivel = "Agregar Nivel",
+        descriptionNivel = "Registre el nombre, la modalidad y el estado (opcional) del nivel. Se guardará en estado desactivado por defecto.",
+        onSubmitNivel,
+        cancelLabelNivel = "Cancelar",
+        aceppLabelNivel = "Guardar Cambios",
+        labelnameNivel = "Nombre del Nivel",
+        labelmodalidadNivel = "Modalidad del Nivel",
+        labelCheckboxNivel = "Estado Activo",
+    } = Props
     return (
         <>
-            <Dialog>
-                <DialogTrigger asChild>
-                    <Button variant="outline">Agregar Nivel</Button>
-                </DialogTrigger>
+            <Dialog open={isOpenNivel}>
                 <DialogContent className="sm:max-w-[520px]">
                     <DialogHeader>
-                        <DialogTitle>Agregar Nivel</DialogTitle>
+                        <DialogTitle>
+                            {tittleNivel}
+                        </DialogTitle>
                         <DialogDescription>
-                            Registre el nombre, la modalidad y el estado (opcional) del nivel. Se guardará en estado desactivado por defecto.
+                            {descriptionNivel}
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                         <div className="grid items-center">
                             <Label htmlFor="name" className="text-left">
-                                Nombre
+                                {labelnameNivel}
                             </Label>
                         </div>
                         <div className="grid grid-cols-3 items-center gap-5">
@@ -78,7 +81,7 @@ export default function DialogCategoria() {
                         </div>
                         <div className="grid items-center">
                             <Label htmlFor="name" className="text-left">
-                                Modalidad
+                                {labelmodalidadNivel}
                             </Label>
                         </div>
 
@@ -88,8 +91,7 @@ export default function DialogCategoria() {
                                     variant="outline"
                                     role="combobox"
                                     aria-expanded={open}
-                                    className="justify-between"
-                                >
+                                    className="justify-between">
                                     {value
                                         ? frameworks.find((framework) => framework.value === value)?.label
                                         : "Seleccionar una modalidad..."}
@@ -130,17 +132,22 @@ export default function DialogCategoria() {
                                 htmlFor="terms"
                                 className="px-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
-                                Estado Activo
+                                {labelCheckboxNivel}
                             </label>
                         </div>
                     </div>
                     <DialogFooter>
                         <DialogClose asChild>
-                            <Button type="button" variant="secondary">
-                                Cancelar
+                            <Button onClick={onCloseNivel}
+                            type="button" 
+                            variant="secondary"
+                                className="border-2 border-red-500 text-red-500 hover:bg-red-50">
+                                {cancelLabelNivel}
                             </Button>
                         </DialogClose>
-                        <Button type="submit">Guardar Cambios</Button>
+                        <Button type="submit" onClick={onSubmitNivel}>
+                            {aceppLabelNivel}
+                        </Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

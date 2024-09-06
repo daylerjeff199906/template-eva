@@ -1,35 +1,49 @@
 import { Button } from "@/components/ui/button"
-import {
-    Dialog,
-    DialogContent,
-    DialogClose,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle} from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 
-export default function DialogCategoria() {
+interface DialogModalidadProps {
+    isOpenMod: boolean
+    onCloseMod: () => void
+    tittleMod?: string
+    descriptionMod?: string
+    onSubmitMod: () => void
+    cancelLabelMod?: string
+    aceppLabelMod?: string
+    labelnameMod?: string
+    labelCheckboxMod?: string
+}
+
+export default function DialogCategoria(Props: DialogModalidadProps) {
+    const {
+        isOpenMod,
+        onCloseMod,
+        tittleMod = "Agregar Modalidad",
+        descriptionMod = "Registre el nombre y el estado (opcional) de la modalidad. Se guardará en estado desactivado por defecto.",
+        onSubmitMod,
+        cancelLabelMod = "Cancelar",
+        aceppLabelMod = "Guardar Cambios",
+        labelnameMod = "Nombre de la Modalidad",
+        labelCheckboxMod = "Estado Activo",
+    } = Props
+
     return (
-        <Dialog>
-            <DialogTrigger asChild>
-                <Button variant="outline">Agregar Modalidad</Button>
-            </DialogTrigger>
+        <Dialog open={isOpenMod}>
             <DialogContent className="sm:max-w-[520px]">
                 <DialogHeader>
-                    <DialogTitle>Agregar Modalidad</DialogTitle>
+                    <DialogTitle>
+                        {tittleMod}
+                    </DialogTitle>
                     <DialogDescription>
-                    Registre el nombre y el estado (opcional) de la modalidad. Se guardará en estado desactivado por defecto.
+                        {descriptionMod}
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                     <div className="grid items-center">
                         <Label htmlFor="name" className="text-left">
-                            Nombre de la Modalidad
+                            {labelnameMod}
                         </Label>
                     </div>
                     <div className="grid grid-cols-3 items-center gap-5">
@@ -42,16 +56,22 @@ export default function DialogCategoria() {
                         htmlFor="terms"
                         className="px-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                        Estado Activo
+                        {labelCheckboxMod}
                     </label>
                 </div>
                 <DialogFooter>
                     <DialogClose asChild>
-                        <Button type="button" variant="secondary" className="border-red-500 text-red-500 hover:bg-red-50">
-                            Cancelar
+                        <Button onClick={onCloseMod}
+                            type="button"
+                            variant="secondary"
+                            className="border-2 border-red-500 text-red-500 hover:bg-red-50">
+                            {cancelLabelMod}
                         </Button>
                     </DialogClose>
-                    <Button type="submit">Guardar Cambios</Button>
+                    <Button onClick={onSubmitMod}
+                        type="submit">
+                        {aceppLabelMod}
+                    </Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
