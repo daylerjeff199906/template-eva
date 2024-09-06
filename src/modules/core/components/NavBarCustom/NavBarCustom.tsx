@@ -43,7 +43,7 @@ export const NavBarCustom = (props: NavBar.INavBarCustomProps) => {
         </section>
       </main>
       {!disabledItemsFooter && (
-        <footer className="flex border-b">
+        <footer className="flex border-b container">
           {menuFooter?.map((item) => (
             <ItemLink
               key={item.label}

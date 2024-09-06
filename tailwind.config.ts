@@ -15,7 +15,7 @@ const config: Config = {
         sm: '100%',
         md: '100%',
         lg: '1720px',
-        xl: '1920px',
+        // xl: '1920px',
       },
       padding: {
         DEFAULT: '1rem',
