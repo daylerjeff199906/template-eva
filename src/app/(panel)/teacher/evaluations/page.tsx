@@ -9,7 +9,7 @@ export default function Page() {
         title="Evaluaciones"
         subtitle="Registro de evaluaciones ya registradas durante diferentes periodos"
         labelAddButton="Comenzar evaluación"
-        hrefAddButton="/teacher/evaluations/new"
+        hrefAddButton="/teacher/evaluations/grade"
       />
       <LayoutAsideSection aside={<AsideTeacher hasSearch />} asidePosition="left">
         <main>

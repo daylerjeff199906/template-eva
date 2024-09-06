@@ -2,10 +2,12 @@
     {
         "id": "1",
         "date": "2021-10-10",
-        "course": "Mathematics",
+        "course": "Mathematicas",
         "students": "24 alumnos",
         "grade": "5",
-        "status": "Completo"
+        "status": "Completo",
+        "time": "Mañana",
+        "progress": 25
     },
     {
         "id": "2",
@@ -13,6 +15,28 @@
         "course": "Comunication",
         "students": "23 alumnos",
         "grade": "5",
-        "status": "Pendiente"
+        "status": "Pendiente",
+        "time": "Tarde",
+        "progress": 30
+    },
+    {
+        "id": "3",
+        "date": "2021-10-10",
+        "course": "Science",
+        "students": "25 alumnos",
+        "grade": "5",
+        "status": "Completo",
+        "time": "Mañana",
+        "progress": 50
+    },
+    {
+        "id": "4",
+        "date": "2021-10-10",
+        "course": "History",
+        "students": "24 alumnos",
+        "grade": "5",
+        "status": "Completo",
+        "time": "Tarde",
+        "progress": 75
     }
 ]
