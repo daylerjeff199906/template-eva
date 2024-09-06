@@ -1,3 +1,5 @@
+import { EvaluacionRender } from '@/modules/teacher'
+
 interface Props {
   params: {
     id: string
@@ -6,5 +8,5 @@ interface Props {
 
 export default function Page(props: Props) {
   const { id } = props.params
-  return <div>page</div>
+  return <EvaluacionRender title={id} />
 }

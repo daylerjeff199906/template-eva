@@ -1,10 +1,16 @@
 import { HeaderSection } from '@/modules/core'
 
-export default function EvaluacionRender() {
+interface IProps {
+  //next change type data
+  title: string
+}
+
+export const EvaluacionRender = (props: IProps) => {
+  const { title } = props
   return (
     <main>
       <HeaderSection
-        title="Matemática - 5to A"
+        title={`Evaluación - ${title}`}
         subtitle="Turno: Mañana"
         disableAddButton
         showBackButton
