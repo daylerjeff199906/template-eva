@@ -37,6 +37,13 @@ interface Row {
   //   available: boolean
 }
 
+const optionsSelect = [
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
+  { value: '4', label: '4' },
+]
+
 function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
   return [
     SelectColumn,
@@ -44,6 +51,7 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       key: 'id',
       name: 'ID',
       frozen: true,
+      width: 'max-content',
       resizable: false,
       renderSummaryCell() {
         return <strong>Total</strong>
@@ -54,6 +62,7 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'N° Documento',
       width: 'max-content',
       draggable: true,
+      frozen: true,
       renderEditCell: textEditor,
     },
     {
@@ -61,31 +70,104 @@ function getColumns(): readonly ColumnOrColumnGroup<Row, SummaryRow>[] {
       name: 'Alumno',
       width: 'max-content',
       draggable: true,
+      frozen: true,
       renderEditCell: textEditor,
     },
     {
       key: 'progress',
       name: 'Progress',
       draggable: true,
-      renderEditCell: textEditor,
+      renderEditCell: (p) => (
+        <select
+          autoFocus
+          // className={textEditorClassname}
+          // value={p.row.country}
+          // onChange={(e) =>
+          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
+          // }
+        >
+          {optionsSelect.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ),
     },
     {
       key: 'progress2',
       name: 'Progress2',
       draggable: true,
-      renderEditCell: textEditor,
+      renderEditCell: (p) => (
+        <select
+          autoFocus
+          // className={textEditorClassname}
+          // value={p.row.country}
+          // onChange={(e) =>
+          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
+          // }
+        >
+          {optionsSelect.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ),
     },
     {
       key: 'progress3',
       name: 'Progress3',
       draggable: true,
-      renderEditCell: textEditor,
+      renderEditCell: (p) => (
+        <select
+          autoFocus
+          // className={textEditorClassname}
+          // value={p.row.country}
+          // onChange={(e) =>
+          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
+          // }
+        >
+          {optionsSelect.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ),
     },
     {
       key: 'progress4',
       name: 'Progress4',
       draggable: true,
-      renderEditCell: textEditor,
+      renderEditCell: (p) => (
+        <select
+          autoFocus
+          // className={textEditorClassname}
+          // value={p.row.country}
+          // onChange={(e) =>
+          //   p.onRowChange({ ...p.row, country: e.target.value }, true)
+          // }
+        >
+          {optionsSelect.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ),
     },
   ]
 }
@@ -100,8 +182,8 @@ function createRows(): readonly Row[] {
 
   for (let i = 0; i < 500; i++) {
     rows.push({
-      id: i,
-      number_doc: Math.random().toString().slice(2, 10),
+      id: i + 1,
+      number_doc: faker.phone.imei(),
       student: faker.person.fullName() + ' ' + faker.person.lastName(),
       progress: Math.random() * 100,
       progress2: Math.random() * 100,
@@ -130,9 +212,11 @@ export const EvaluationTable = () => {
       onSelectedRowsChange={setSelectedRows}
       onRowsChange={setRows}
       className="fill-grid"
-      //   topSummaryRows={summaryRows}
-      //   bottomSummaryRows={summaryRows}
-      //   direction={direction}
+      style={{
+        backgroundColor: 'white',
+        color: 'black',
+        colorScheme: 'light',
+      }}
     />
   )
 
