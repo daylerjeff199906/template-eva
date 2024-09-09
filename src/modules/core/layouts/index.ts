@@ -1,3 +1,4 @@
 import { LayoutAsideSection } from './LayoutAside'
+import { LayoutFrmHorizontal } from './LayoutFrmHorizontal'
 
-export { LayoutAsideSection }
+export { LayoutAsideSection, LayoutFrmHorizontal }
