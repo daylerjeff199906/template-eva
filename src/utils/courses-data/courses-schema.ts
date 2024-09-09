@@ -9,6 +9,8 @@ export const courseSchema = z.object({
   students: z.string(),
   grade: z.string(),
   status: z.string(),
+  time: z.string(),
+  progress: z.number(),
 });
 
 export type Course = z.infer<typeof courseSchema>;

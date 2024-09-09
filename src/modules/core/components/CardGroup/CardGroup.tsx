@@ -18,10 +18,11 @@ interface ICardGroupProps {
     labelRef: string,
     progress: number,
     states: boolean,
+    href?: string
 }
 
 
-export function CardGroup({title = 'Title', description = 'Description', labelRef='Default', progress = 0, states=true} : ICardGroupProps) {
+export function CardGroup({title = 'Title', description = 'Description', labelRef='Default', progress = 0, states=true, href} : ICardGroupProps) {
     return (
         <Card className="max-w-[350px]">
             <CardHeader>
@@ -46,8 +47,7 @@ export function CardGroup({title = 'Title', description = 'Description', labelRe
             <CardFooter className="flex justify-between">
                 <Button asChild>
                     <Link
-                        href="/"
-                        className="bg-"
+                        href={href || '#'}
                     >
                         {labelRef}
                     </Link>

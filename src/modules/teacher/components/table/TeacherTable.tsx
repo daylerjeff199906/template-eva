@@ -3,7 +3,7 @@ import { z } from "zod";
 import { promises as fs } from "fs";
 import { DataTable } from "@/modules/core";
 import { teacherColumns } from "./TeacherColumns";
-import { courseSchema } from "@/utils/courses-data/courses-schema";
+import { courseSchema } from "@/utils/courses-data";
 
 
 export default async function TeacherTable() {

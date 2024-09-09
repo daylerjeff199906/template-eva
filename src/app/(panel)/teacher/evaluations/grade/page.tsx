@@ -1,26 +1,8 @@
 import { CardGroup, HeaderSection } from "@/modules/core";
+import { getCourses } from "@/utils/courses-data/get-corses";
 
-export default function NewEvaluation() {
-  const courses = [
-    {
-      id: 1,
-      name: "Mathematics",
-      time: "Mañana",
-      status: 20,
-    },
-    {
-      id: 2,
-      name: "Physics",
-      time: "Tarde",
-      status: 25,
-    },
-    {
-      id: 3,
-      name: "Chemistry",
-      time: "Noche",
-      status: 59,
-    },
-  ];
+export default async function GradePage() {
+  const coursesList = await getCourses();
 
   return (
     <div className="flex flex-col space-y-8">
@@ -31,14 +13,15 @@ export default function NewEvaluation() {
         showBackButton
       />
       <main className="grid grid-cols-4 gap-6 container">
-        {courses.map((course) => (
+        {coursesList.map((course) => (
           <CardGroup
             key={course.id}
             labelRef="Importar datos"
-            title={course.name}
+            title={course.course}
             description={course.time}
-            progress={course.status}
-            states={course.status > 0}
+            progress={course.progress}
+            states={course.progress > 1}
+            href={`grade/${course.course}`}
           />
         ))}
       </main>
